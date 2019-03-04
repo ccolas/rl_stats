@@ -1,0 +1,11 @@
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage[nomessages]{fp}% http://ctan.org/pkg/fp
+\newcommand{\maxnum}{1.00}
+\newlength{\maxlen}
+\newcommand{\databar}[2][myblue]{%
+  \settowidth{\maxlen}{\maxnum}%
+  \addtolength{\maxlen}{\tabcolsep}%
+  \FPeval\result{round(#2/\maxnum:4)}%
+  \rlap{\transparent{0.5}\color{myblue}\hspace*{-1.\tabcolsep}\rule[-.05\ht\strutbox]{\result\maxlen}{1.1\ht\strutbox}}%
+  \makebox[\dimexpr\maxlen-\tabcolsep][r]{#2}%
+}
